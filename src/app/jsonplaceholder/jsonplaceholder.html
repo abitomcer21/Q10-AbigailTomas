@@ -1,0 +1,37 @@
+<h2>Ejercicio 2: JSONPlaceholder (POST)</h2>
+
+<form #postForm="ngForm">
+  <div>
+    <label>Título:</label>
+    <input type="text" name="title" [(ngModel)]="postData.title" required>
+  </div>
+  
+  <div>
+    <label>Cuerpo:</label>
+    <textarea name="body" [(ngModel)]="postData.body" required></textarea>
+  </div>
+  
+  <div>
+    <label>User ID:</label>
+    <input type="number" name="userId" [(ngModel)]="postData.userId">
+  </div>
+  
+  <button type="button" (click)="enviarPost()" [disabled]="cargando">
+    {{ cargando ? 'Enviando...' : 'Enviar Post' }}
+  </button>
+  <button type="button" (click)="limpiarFormulario()">Limpiar</button>
+</form>
+
+@if (cargando) {
+  <div class="cargando">
+    Enviando datos...
+  </div>
+}
+
+@if (response) {
+  <div class="respuesta">
+    <h3>Respuesta del servidor:</h3>
+    <pre>{{ response | json }}</pre>
+    <p><strong>ID creado:</strong> {{ response.id }}</p>
+  </div>
+}

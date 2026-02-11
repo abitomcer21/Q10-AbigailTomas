@@ -1,0 +1,23 @@
+<h1>Rick and Morty - Personajes</h1>
+<hr>
+@if (loading) {
+  <div>Cargando...</div>
+}
+@if (error) {
+  <div>Error: {{ error }}</div>
+}
+
+<!-- Mostrar lista de 5 personajes al cargar -->
+<ng-container *ngIf="personajes.length">
+  <div>
+    <h2>Primeros 5 personajes:</h2>
+    <div *ngFor="let personaje of personajes">
+      <h3>{{ personaje.name }}</h3>
+      <img [src]="personaje.image" alt="{{ personaje.name }}" width="120">
+      <p>Especie: {{ personaje.species }}</p>
+      <p>Género: {{ personaje.gender }}</p>
+      <p>Estado: {{ personaje.status }}</p>
+      <hr>
+    </div>
+  </div>
+</ng-container>
