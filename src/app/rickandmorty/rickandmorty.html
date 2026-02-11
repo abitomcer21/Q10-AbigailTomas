@@ -8,16 +8,18 @@
 }
 
 <!-- Mostrar lista de 5 personajes al cargar -->
-<ng-container *ngIf="personajes.length">
+@if (personajes.length) {
   <div>
     <h2>Primeros 5 personajes:</h2>
-    <div *ngFor="let personaje of personajes">
-      <h3>{{ personaje.name }}</h3>
-      <img [src]="personaje.image" alt="{{ personaje.name }}" width="120">
-      <p>Especie: {{ personaje.species }}</p>
-      <p>Género: {{ personaje.gender }}</p>
-      <p>Estado: {{ personaje.status }}</p>
-      <hr>
-    </div>
+    @for (personaje of personajes; track personaje.id) {
+      <div>
+        <h3>{{ personaje.name }}</h3>
+        <img [src]="personaje.image" alt="{{ personaje.name }}" width="120">
+        <p>Especie: {{ personaje.species }}</p>
+        <p>Género: {{ personaje.gender }}</p>
+        <p>Estado: {{ personaje.status }}</p>
+        <hr>
+      </div>
+    }
   </div>
-</ng-container>
+}
